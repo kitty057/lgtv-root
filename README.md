@@ -1,6 +1,12 @@
 # lgtv-root
 documentation and help on rooting an lg webos tv.
 
+## miscellaneous
+
+the miscellaneous section heralds any information that may be relevant to anything you may come across in webos 11.2.
+any line string with a hashtag (`#`) is regarded as a comment.
+/mnt/otncabi/usr/palm/applications/ # holds at least four system applications, most notably com.webos.app.adapp
+
 ## rooting
 
 ## applications
