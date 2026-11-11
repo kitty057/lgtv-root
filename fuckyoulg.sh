@@ -1,4 +1,5 @@
 #!/bin/sh
+# idempotentcy.
 exec >>/var/lib/webosbrew/fuckyoulg.log 2>&1
 echo 'date and time is'
 date
