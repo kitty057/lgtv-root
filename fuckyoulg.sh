@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 if ! command -v which; then
     echo "you dont have the 'which' command, install a core utilities package"
     exit 1
