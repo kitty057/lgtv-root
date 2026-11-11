@@ -18,6 +18,19 @@ fuck() {
     pkill -9 -x "$service" 2>/dev/null    
     echo "$service done."
 }
+ffuck() {
+    service=$1
+    servicepath=$(which "$service" 2>/dev/null)
+    if [ -z "$servicepath" ]; then
+        echo "$service not in path, um... yeah i don't know what to say lowkey guys"
+        return
+    fi
+    touch "$fppath/$service"
+    chmod +x "$fppath/$service"
+    mount --bind "$fppath/$service" "$servicepath" 2>/dev/null
+    pkill -9 -f "$service" 2>/dev/null    
+    echo "$service done."
+}
 fuck uploadd
 echo 'also fuck you lg.'
 fuck admanager
@@ -27,8 +40,9 @@ echo 'curse you for eternity, lg.'
 fuck faultmanager
 echo 'may you burn in the depths of hell for the aeonian time to come, lg.'
 fuck remotelogger
-fuck com.webos.service.microphone
-fuck com.webos.service.pushclient
+ffuck com.webos.service.microphone
+ffuck com.webos.service.pushclient
+fuck iconnectivity
 echo 'last fuck you, lg.'
 echo 'stupid motherfuckers.'
 echo 'all done.'
