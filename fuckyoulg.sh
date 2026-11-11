@@ -42,7 +42,13 @@ echo 'may you burn in the depths of hell for the aeonian time to come, lg.'
 fuck remotelogger
 ffuck com.webos.service.microphone
 ffuck com.webos.service.pushclient
-ffuck lg.thinqai.adap
+# this one's separate because it was fucking hiding from me. little bastard.
+touch /home/root/fake-processes/thinqai
+chmod +x /home/root/fake-processes/thinqai
+mount --bind /home/root/fake-processes/thinqai /var/palm/jail/lg.thinqai.adapter/usr/sbin/lg.thinqai.adapter
+pkill -9 -f lg.thinqai.adapter
+echo 'lg.thinqai.adapter killed'
+# okay back to normal
 fuck iconnectivity
 echo 'last fuck you, lg.'
 echo 'stupid motherfuckers.'
