@@ -12,6 +12,12 @@ fuck() {
         echo "$service not in path, um... yeah i don't know what to say lowkey guys"
         return
     fi
+    # already mounted?
+    if mount | grep -q "$servicepath"; then
+        echo "$service already fucked, skipping $service"
+        pkill -9 -x "$service" 2>/dev/null
+        return
+    fi
     touch "$fppath/$service"
     chmod +x "$fppath/$service"
     mount --bind "$fppath/$service" "$servicepath" 2>/dev/null
@@ -23,6 +29,12 @@ ffuck() {
     servicepath=$(which "$service" 2>/dev/null)
     if [ -z "$servicepath" ]; then
         echo "$service not in path, um... yeah i don't know what to say lowkey guys"
+        return
+    fi
+    # same check shit 
+    if mount | grep -q "$servicepath"; then
+        echo "$service already fucked, skipping $service"
+        pkill -9 -x "$service" 2>/dev/null
         return
     fi
     touch "$fppath/$service"
@@ -60,6 +72,7 @@ fuck voiceinput
 fuck voiceconductor
 fuck ai-inference-manager
 fuck iot-client
+fuck voiceinput_hidraw
 echo 'last fuck you, lg.'
 echo 'stupid motherfuckers.'
 echo 'all done.'
