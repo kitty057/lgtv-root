@@ -42,6 +42,7 @@ echo 'may you burn in the depths of hell for the aeonian time to come, lg.'
 fuck remotelogger
 ffuck com.webos.service.microphone
 ffuck com.webos.service.pushclient
+ffuck lg.thinqai.adap
 fuck iconnectivity
 echo 'last fuck you, lg.'
 echo 'stupid motherfuckers.'
