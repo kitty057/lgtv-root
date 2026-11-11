@@ -27,6 +27,8 @@ echo 'curse you for eternity, lg.'
 fuck faultmanager
 echo 'may you burn in the depths of hell for the aeonian time to come, lg.'
 fuck remotelogger
+fuck com.webos.service.microphone
+fuck com.webos.service.pushclient
 echo 'last fuck you, lg.'
 echo 'stupid motherfuckers.'
 echo 'all done.'
