@@ -14,10 +14,7 @@ i've found that most if not all apps installed on a webos tv are, unsurprisingly
 2. get the file off of the tv with a command akin to `scp -r root@192.168.0.189://mnt/otncabi/usr/palm/applications/com.webos.app.adapp ~/lgapps/adapp` if your tv isnt already rooted consult the above rooting steps.
 
 ## telemetry and advertising
-**DISCLIAMER:** doing some of the things in the below categorif ! command -v git &> /dev/null; then
-    echo "install git"
-    exit 1
-fiy, labelled 'telemetry and advertising', may result in damage done to the system, including, but not limited to: broken native streaming service applications, inability to use some native applications or binaries on the system, kernel panics, in rare cases, system crashes, undefined behavior or instability, and increased privacy.
+**DISCLIAMER:** doing some of the things in the below category, labelled 'telemetry and advertising', may result in damage done to the system, including, but not limited to: broken native streaming service applications, inability to use some native applications or binaries on the system, kernel panics, in rare cases, system crashes, undefined behavior or instability, and increased privacy.
 
 some ways to disable system services such as `admanager`, which is, as the name implies, an advert manager service, and `uploadd`, which is a telemetry service made solely for the purpose of scraping your data and mailing it straight back to it's corporate overlords lg, i pity this process. what a bland life it must have. living only to serve at the mercy of your Gods.
 
