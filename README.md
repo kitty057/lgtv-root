@@ -7,11 +7,13 @@ any line string with a hashtag (`#`) is regarded as a comment.
 /mnt/otncabi/usr/palm/applications/ # holds at least four system applications, most notably com.webos.app.adapp
 
 ## rooting
+lowkey don't know yet, sorry guys!
 
 ## applications
 i've found that most if not all apps installed on a webos tv are, unsurprisingly, javascript based, and they're mostly compiled javascript bundles, here are steps to decompile them: 
 1. install ghidra from NationalSecurityAgency/ghidra
 2. get the file off of the tv with a command akin to `scp -r root@192.168.0.189://mnt/otncabi/usr/palm/applications/com.webos.app.adapp ~/lgapps/adapp` if your tv isnt already rooted consult the above rooting steps.
+this is also unfinished because i lowkey don't have that much info on it yet lol
 
 ## telemetry and advertising
 **DISCLIAMER:** doing some of the things in the below category, labelled 'telemetry and advertising', may result in damage done to the system, including, but not limited to: broken native streaming service applications, inability to use some native applications or binaries on the system, kernel panics, in rare cases, system crashes, undefined behavior or instability, and increased privacy.
