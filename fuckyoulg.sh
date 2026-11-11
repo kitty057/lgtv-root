@@ -50,6 +50,16 @@ pkill -9 -f lg.thinqai.adapter
 echo 'lg.thinqai.adapter killed'
 # okay back to normal
 fuck iconnectivity
+fuck sdx
+fuck rdxd
+fuck PmKLogDaemon
+fuck PmLogDaemon
+fuck voiceinput
+# it's insane that i even need to kill aaaaalll of these processes just to have some fucking privacy.
+# fuck you lg.
+fuck voiceconductor
+fuck ai-inference-manager
+fuck iot-client
 echo 'last fuck you, lg.'
 echo 'stupid motherfuckers.'
 echo 'all done.'
