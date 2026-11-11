@@ -1,39 +1,32 @@
 #!/bin/sh
-if ! command -v which; then
+if ! command -v which >/dev/null 2>&1; then
     echo "you dont have the 'which' command, install a core utilities package"
     exit 1
 fi
 fppath=$HOME/fake-processes
 mkdir -p "$fppath" 
-touch $fppath/uploadd 
-chmod +x $fppath/uploadd 
-mount --bind $fppath/uploadd $(which uploadd) 
-pkill -9 -x uploadd
-echo 'uploadd done.'
+fuck() {
+    service=$1
+    servicepath=$(which "$service" 2>/dev/null)
+    if [ -z "$servicepath" ]; then
+        echo "$service not in path, um... yeah i don't know what to say lowkey guys"
+        return
+    fi
+    touch "$fppath/$service"
+    chmod +x "$fppath/$service"
+    mount --bind "$fppath/$service" "$servicepath" 2>/dev/null
+    pkill -9 -x "$service" 2>/dev/null    
+    echo "$service done."
+}
+fuck uploadd
 echo 'also fuck you lg.'
-touch $fppath/admanager
-chmod +x $fppath/admanager
-mount --bind $fppath/admanager $(which admanager)
-pkill -9 -x admanager
-echo 'admanager done.'
+fuck admanager
 echo 'fuck you again, lg.'
-touch $fppath/acr2
-chmod +x $fppath/acr2
-mount --bind $fppath/acr2 $(which acr2)
-pkill -9 -x acr2
-echo 'acr2 done.'
+fuck acr2
 echo 'curse you for eternity, lg.'
-touch $fppath/faultmanager
-chmod +x $fppath/faultmanager
-mount --bind $fppath/faultmanager $(which faultmanager)
-pkill -9 -x faultmanager
-echo 'faultmanager done.'
+fuck faultmanager
 echo 'may you burn in the depths of hell for the aeonian time to come, lg.'
-touch $fppath/remotelogger
-chmod +x $fppath/remotelogger
-mount --bind $fppath/remotelogger $(which remotelogger)
-pkill -9 -x remotelogger
-echo 'remotelogger done.'
+fuck remotelogger
 echo 'last fuck you, lg.'
 echo 'stupid motherfuckers.'
 echo 'all done.'
