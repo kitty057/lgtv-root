@@ -1,10 +1,14 @@
 #!/bin/sh
+exec >>/var/lib/webosbrew/fuckyoulg.log 2>&1
+echo 'date and time is'
+date
+echo 'logs:'
 if ! command -v which >/dev/null 2>&1; then
     echo "you dont have the 'which' command, install a core utilities package"
     exit 1
 fi
 fppath=$HOME/fake-processes
-mkdir -p "$fppath" 
+mkdir -p "$fppath"
 fuck() {
     service=$1
     servicepath=$(which "$service" 2>/dev/null)
@@ -21,7 +25,7 @@ fuck() {
     touch "$fppath/$service"
     chmod +x "$fppath/$service"
     mount --bind "$fppath/$service" "$servicepath" 2>/dev/null
-    pkill -9 -x "$service" 2>/dev/null    
+    pkill -9 -x "$service" 2>/dev/null
     echo "$service done."
 }
 ffuck() {
@@ -34,13 +38,13 @@ ffuck() {
     # same check shit 
     if mount | grep -q "$servicepath"; then
         echo "$service already fucked, skipping $service"
-        pkill -9 -x "$service" 2>/dev/null
+        pkill -9 -f "$service" 2>/dev/null
         return
     fi
     touch "$fppath/$service"
     chmod +x "$fppath/$service"
     mount --bind "$fppath/$service" "$servicepath" 2>/dev/null
-    pkill -9 -f "$service" 2>/dev/null    
+    pkill -9 -f "$service" 2>/dev/null
     echo "$service done."
 }
 fuck uploadd
@@ -55,9 +59,14 @@ fuck remotelogger
 ffuck com.webos.service.microphone
 ffuck com.webos.service.pushclient
 # this one's separate because it was fucking hiding from me. little bastard.
-touch /home/root/fake-processes/thinqai
-chmod +x /home/root/fake-processes/thinqai
-mount --bind /home/root/fake-processes/thinqai /var/palm/jail/lg.thinqai.adapter/usr/sbin/lg.thinqai.adapter
+# check if the little bastard is in path.
+if mount | grep -q "/var/palm/jail/lg.thinqai.adapter/usr/sbin/lg.thinqai.adapter"; then
+    echo "thinqai already fucked, skipping"
+else
+    touch $fppath/thinqai
+    chmod +x $fppath/thinqai
+    mount --bind $fppath/thinqai /var/palm/jail/lg.thinqai.adapter/usr/sbin/lg.thinqai.adapter
+fi
 pkill -9 -f lg.thinqai.adapter
 echo 'lg.thinqai.adapter killed'
 # okay back to normal
