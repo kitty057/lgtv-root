@@ -26,7 +26,11 @@ fuck() {
     chmod +x "$fppath/$service"
     mount --bind "$fppath/$service" "$servicepath" 2>/dev/null
     pkill -9 -x "$service" 2>/dev/null
-    echo "$service done."
+    if pgrep $service; then 
+        echo "fuck failed for $service"
+    else 
+        echo "$service done."
+    fi
 }
 ffuck() {
     service=$1
@@ -45,7 +49,11 @@ ffuck() {
     chmod +x "$fppath/$service"
     mount --bind "$fppath/$service" "$servicepath" 2>/dev/null
     pkill -9 -f "$service" 2>/dev/null
-    echo "$service done."
+    if pgrep $service; then 
+        echo "fuck failed for $service"
+    else 
+        echo "$service done."
+    fi
 }
 fuck uploadd
 echo 'also fuck you lg.'
