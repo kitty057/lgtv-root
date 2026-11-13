@@ -1,5 +1,5 @@
 #!/bin/sh
-exec >>/var/lib/webosbrew/fuckyoulg.log 2>&1
+# exec >>/var/lib/webosbrew/fuckyoulg.log 2>&1
 echo 'date and time is'
 date
 echo 'logs:'
