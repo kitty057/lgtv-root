@@ -1,5 +1,4 @@
 #!/bin/sh
-# idempotentcy.
 exec >>/var/lib/webosbrew/fuckyoulg.log 2>&1
 echo 'date and time is'
 date
@@ -61,7 +60,7 @@ ffuck com.webos.service.microphone
 ffuck com.webos.service.pushclient
 # this one's separate because it was fucking hiding from me. little bastard.
 # check if the little bastard is in path.
-if mount | grep -q "/var/palm/jail/lg.thinqai.adapter/usr/sbin/lg.thinqai.adapter"; then
+if mount|grep -q "/var/palm/jail/lg.thinqai.adapter/usr/sbin/lg.thinqai.adapter"; then
     echo "thinqai already fucked, skipping"
 else
     touch $fppath/thinqai
@@ -70,6 +69,15 @@ else
 fi
 pkill -9 -f lg.thinqai.adapter
 echo 'lg.thinqai.adapter killed'
+# prerequisite of legacybroadcast, stops it from launching.
+if mount|grep -q "/etc/systemd/system/scripts/snapshot-delegator-legacy-broadcast.sh"; then
+    echo 'legacybroadcast prerequisite already fucked, skipping'
+else 
+    touch $fppath/lbroadc-pre
+    chmod +x $fppath/lbroadc-pre
+    mount --bind $fppath/lbroad-pre /etc/systemd/system/scripts/snapshot-delegator-legacy-broadcast.sh
+fi
+pkill -9 -f legacy-broadcast
 # okay back to normal
 fuck iconnectivity
 fuck sdx
@@ -83,6 +91,7 @@ fuck voiceconductor
 fuck ai-inference-manager
 fuck iot-client
 fuck voiceinput_hidraw
+ffuck legacy-broadcast
 echo 'last fuck you, lg.'
 echo 'stupid motherfuckers.'
 echo 'all done.'
