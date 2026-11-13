@@ -69,15 +69,6 @@ else
 fi
 pkill -9 -f lg.thinqai.adapter
 echo 'lg.thinqai.adapter killed'
-# prerequisite of legacybroadcast, stops it from launching.
-if mount|grep -q "/etc/systemd/system/scripts/snapshot-delegator-legacy-broadcast.sh"; then
-    echo 'legacybroadcast prerequisite already fucked, skipping'
-else 
-    touch $fppath/lbroadc-pre
-    chmod +x $fppath/lbroadc-pre
-    mount --bind $fppath/lbroad-pre /etc/systemd/system/scripts/snapshot-delegator-legacy-broadcast.sh
-fi
-pkill -9 -f legacy-broadcast
 # okay back to normal
 fuck iconnectivity
 fuck sdx
@@ -91,7 +82,7 @@ fuck voiceconductor
 fuck ai-inference-manager
 fuck iot-client
 fuck voiceinput_hidraw
-ffuck legacy-broadcast
+ffuck legacy-broadcast-dvb
 echo 'last fuck you, lg.'
 echo 'stupid motherfuckers.'
 echo 'all done.'
