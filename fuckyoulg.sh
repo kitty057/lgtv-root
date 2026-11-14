@@ -1,10 +1,8 @@
 #!/bin/sh
 # exec >>/var/lib/webosbrew/fuckyoulg.log 2>&1
-echo 'date and time is'
 date
-echo 'logs:'
 if ! command -v which >/dev/null 2>&1; then
-    echo "you dont have the 'which' command, install a core utilities package"
+    echo "[-] you dont have the 'which' command, install a core utilities package"
     exit 1
 fi
 fppath=$HOME/fake-processes
@@ -13,12 +11,12 @@ fuck() {
     service=$1
     servicepath=$(which "$service" 2>/dev/null)
     if [ -z "$servicepath" ]; then
-        echo "$service not in path, um... yeah i don't know what to say lowkey guys"
+        echo "[-] $service not in path, um... yeah i don't know what to say lowkey guys"
         return
     fi
     # already mounted?
-    if mount | grep -q "$servicepath"; then
-        echo "$service already fucked, skipping $service"
+    if mount|grep -q "$servicepath"; then
+        echo "[+] $service already fucked, skipping $service"
         pkill -9 -x "$service" 2>/dev/null
         return
     fi
@@ -26,22 +24,22 @@ fuck() {
     chmod +x "$fppath/$service"
     mount --bind "$fppath/$service" "$servicepath" 2>/dev/null
     pkill -9 -x "$service" 2>/dev/null
-    if pgrep $service; then 
-        echo "fuck failed for $service"
+    if pgrep -f $service; then 
+        echo "[-] fuck failed for $service"
     else 
-        echo "$service done."
+        echo "[+]$service done."
     fi
 }
 ffuck() {
     service=$1
     servicepath=$(which "$service" 2>/dev/null)
     if [ -z "$servicepath" ]; then
-        echo "$service not in path, um... yeah i don't know what to say lowkey guys"
+        echo "[-] $service not in path, um... yeah i don't know what to say lowkey guys"
         return
     fi
     # same check shit 
-    if mount | grep -q "$servicepath"; then
-        echo "$service already fucked, skipping $service"
+    if mount|grep -q "$servicepath"; then
+        echo "[+] $service already fucked, skipping $service"
         pkill -9 -f "$service" 2>/dev/null
         return
     fi
@@ -49,10 +47,10 @@ ffuck() {
     chmod +x "$fppath/$service"
     mount --bind "$fppath/$service" "$servicepath" 2>/dev/null
     pkill -9 -f "$service" 2>/dev/null
-    if pgrep $service; then 
-        echo "fuck failed for $service"
+    if pgrep -f $service; then 
+        echo "[-] fuck failed for $service"
     else 
-        echo "$service done."
+        echo "[+] $service done."
     fi
 }
 fuck uploadd
@@ -69,14 +67,14 @@ ffuck com.webos.service.pushclient
 # this one's separate because it was fucking hiding from me. little bastard.
 # check if the little bastard is in path.
 if mount|grep -q "/var/palm/jail/lg.thinqai.adapter/usr/sbin/lg.thinqai.adapter"; then
-    echo "thinqai already fucked, skipping"
+    echo "[+] thinqai already fucked, skipping"
 else
     touch $fppath/thinqai
     chmod +x $fppath/thinqai
     mount --bind $fppath/thinqai /var/palm/jail/lg.thinqai.adapter/usr/sbin/lg.thinqai.adapter
 fi
 pkill -9 -f lg.thinqai.adapter
-echo 'lg.thinqai.adapter killed'
+echo '[+] lg.thinqai.adapter done'
 # okay back to normal
 fuck iconnectivity
 fuck sdx
